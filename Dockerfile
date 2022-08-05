@@ -16,6 +16,10 @@ COPY . .
 
 RUN yum update -y
 RUN yum install net-tools -y
+
+RUN yum install iptables-services -y
+RUN systemctl enable iptables
+
 RUN rpm -i openvpn-as-2.5-CentOS7.x86_64.rpm
 RUN rm /usr/local/openvpn_as/lib/python2.7/site-packages/pyovpn-2.0-py2.7.egg
 RUN cp pyovpn-2.0-py2.7.egg /usr/local/openvpn_as/lib/python2.7/site-packages/
